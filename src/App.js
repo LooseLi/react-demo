@@ -1,36 +1,47 @@
+// 组件状态 类组件作为演示
 import React from "react";
 
-// 函数组件的创建和渲染
-function Hello() {
-  // 事件对象e
-  const helloClick = (e) => {
-    e.preventDefault();
-    console.log(`函数组件事件`, e);
+class TestComponent extends React.Component {
+  // 1. 定义组件状态
+  state = {
+    name: '测试一下'
   }
-  return <p><a onClick={helloClick} href="http://baidu.com">函数组件</a></p>
-}
-
-// 类组件的创建和渲染
-class HelloComponent extends React.Component{
-  // 事件回调函数(标准写法 避免this指向问题)
-
-  // 如何传递自定义参数
-  // 1. 只需要额外参数 {click} -> {() => click('自定义的参数')}
-  // 2. 既需要e，也需要额外参数 {() => click('自定义的参数')} -> {(e) => click(e, '自定义的参数')}
-  helloComponentClick = (e, msg) => {
-    console.log(`类组件`, e, msg);
+  // 3. 修改state中的状态name
+  // 注意：不可以直接做赋值修改 必须通过一个方法 setState
+  changeName = () => {
+    this.setState({
+      // 在这里可以定义各种属性 全都是当前组件的状态
+      name: 'loose.li'
+    })
   }
   render() {
-    return <p onClick={(e) => this.helloComponentClick(e, '自定义传参')}>类组件</p>
+    // render函数中的this已经被react内部做了修正，这里的this就是指向当前的组件实例对象
+
+    // 2. 使用状态
+    return (
+      <div>
+        <p>this is TestComponent</p>
+        <p>当前名字：{this.state.name}</p>
+        <button onClick={this.changeName}>修改名称</button>
+      </div>
+    )
   }
 }
+
 function App() {
   return (
     <div className="App">
-      <Hello></Hello>
-      <HelloComponent></HelloComponent>
+      <TestComponent />
     </div>
   );
 }
 
 export default App;
+
+/**
+ * 总结
+ * 1. 编写组件其实就是编写原生js类或函数
+ * 2. 定义状态必须通过state实例属性的方法，提供一个对象，名称是固定的就叫做state
+ * 3. 修改state中的任何属性，都不可以通过直接赋值 必须走setState方法，这个方法来自于继承
+ * 4. 这里的this关键词很容易出现指向错误的问题
+ */
