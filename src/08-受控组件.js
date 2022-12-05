@@ -1,15 +1,19 @@
-// 非受控组件
-import React, {createRef} from "react";
+// 受控组件
+import React from "react";
 
 class TestComponent extends React.Component {
-  myRef = createRef()
-  inputChange = () => {
-    console.log(this.myRef.current.value)
+  state = {
+    message: 'test'
+  }
+  inputChange = (e) => {
+    this.setState({
+      message: e.target.value
+    })
   }
   render() {
     return (
       <div>
-        <input type='text' ref={this.myRef} onChange={this.inputChange} />
+        <input type='text' value={this.state.message} onChange={this.inputChange} />
       </div>
     )
   }
