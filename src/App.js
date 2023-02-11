@@ -37,7 +37,7 @@ class App extends React.Component {
   handleDelete = record => {
     console.log(record);
     this.setState({
-      list: this.state.list.filter(item => item !== record.id),
+      list: this.state.list.filter(item => item.id !== record.id),
     });
   };
   state = {
