@@ -1,7 +1,7 @@
 import './App.css';
 import React from 'react';
 import 'antd/dist/reset.css';
-import {Input, Table} from 'antd';
+import {Input, Table, Popconfirm} from 'antd';
 
 const {Search} = Input;
 
@@ -34,6 +34,12 @@ class App extends React.Component {
       list: arr,
     });
   };
+  handleDelete = record => {
+    console.log(record);
+    this.setState({
+      list: this.state.list.filter(item => item !== record.id),
+    });
+  };
   state = {
     list: [],
     columns: [
@@ -56,6 +62,11 @@ class App extends React.Component {
         title: '操作',
         dataIndex: 'do',
         key: 'do',
+        render: (_, record) => (
+          <Popconfirm title="Sure to delete?" onConfirm={() => this.handleDelete(record)}>
+            <a>Delete</a>
+          </Popconfirm>
+        ),
       },
     ],
   };
