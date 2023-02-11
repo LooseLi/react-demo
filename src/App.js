@@ -6,32 +6,42 @@ import {Input, Table, Popconfirm} from 'antd';
 const {Search} = Input;
 
 class App extends React.Component {
+  arr = [
+    {
+      key: 1,
+      id: 1,
+      name: '小润',
+      des: '松鼠',
+    },
+    {
+      key: 2,
+      id: 2,
+      name: '亚美',
+      des: '鸭子',
+    },
+    {
+      key: 3,
+      id: 3,
+      name: '史培亚',
+      des: '狼🐺',
+    },
+  ];
   // 搜索
-  onSearch = value => console.log(value);
+  onSearch = value => {
+    if (!value) {
+      this.setState({
+        list: this.arr,
+      });
+    } else {
+      this.setState({
+        list: this.state.list.filter(item => item.name.includes(value)),
+      });
+    }
+  };
   // 数据加载
   initData = () => {
-    const arr = [
-      {
-        key: 1,
-        id: 1,
-        name: '小润',
-        des: '松鼠',
-      },
-      {
-        key: 2,
-        id: 2,
-        name: '亚美',
-        des: '鸭子',
-      },
-      {
-        key: 3,
-        id: 3,
-        name: '史培亚',
-        des: '狼🐺',
-      },
-    ];
     this.setState({
-      list: arr,
+      list: this.arr,
     });
   };
   handleDelete = record => {
