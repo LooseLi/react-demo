@@ -1,5 +1,5 @@
 // 1.导入useNavigate
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 
 function Login() {
   // 2.执行useNavigate得到一个跳转函数
@@ -7,12 +7,16 @@ function Login() {
   // 跳转到关于页
   function goAbout() {
     // 3.调用跳转函数传入目标路径
-    navigate('/about');
+    navigate('/about?id=1000');
   }
+
+  const params = useParams();
+  console.log(params);
   return (
     <div>
       <h1>this is login</h1>
-      <button onClick={goAbout}>跳转到关于页</button>
+      <p>About路由传参id：{params.id}</p>
+      <button onClick={goAbout}>跳转到关于页useParams传参</button>
     </div>
   );
 }
