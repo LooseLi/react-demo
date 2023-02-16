@@ -1,19 +1,21 @@
 // 导入counterStore
 // 导入中间件，完成响应式变化
 import {observer} from 'mobx-react-lite';
-import {counterStore} from './counter';
+import {useStore} from './index';
 
 function App() {
+  const rootStore = useStore();
+  console.log(rootStore);
   return (
     <div>
       <h1>app</h1>
       <div>
-        <span>{counterStore.filterList.join(',')}</span>
-        <button onClick={counterStore.addList}>+</button>
+        <span>{rootStore.listStore.list.join(',')}</span>
+        <button onClick={rootStore.listStore.addList}>+</button>
       </div>
       <div>
-        <span>{counterStore.count}</span>
-        <button onClick={counterStore.addCount}>+</button>
+        <span>{rootStore.counterStore.count}</span>
+        <button onClick={rootStore.counterStore.addCount}>+</button>
       </div>
     </div>
   );

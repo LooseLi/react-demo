@@ -28,7 +28,4 @@ class CounterStore {
   };
 }
 
-// 实例化并导出
-const counterStore = new CounterStore();
-
-export {counterStore};
+export {CounterStore};
