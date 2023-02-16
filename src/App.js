@@ -1,3 +1,3 @@
-import App from './demo-router/App';
+import App from './store/app';
 
 export default App;

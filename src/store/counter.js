@@ -1,0 +1,25 @@
+/**
+ * 初始化mobx
+ * 1. 定义数据状态(state)
+ * 2. 数据响应式处理
+ * 3. 定义action函数(修改函数)
+ * 4. 实例化并导出实例
+ */
+import {makeAutoObservable} from 'mobx';
+class CounterStore {
+  // 定义数据
+  count = 0;
+  constructor() {
+    // 把数据弄成响应式
+    makeAutoObservable(this);
+  }
+  // 定义action函数，修改数据
+  addCount = () => {
+    this.count++;
+  };
+}
+
+// 实例化并导出
+const counterStore = new CounterStore();
+
+export {counterStore};
