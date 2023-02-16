@@ -7,8 +7,14 @@ function App() {
   return (
     <div>
       <h1>app</h1>
-      <span>{counterStore.count}</span>
-      <button onClick={counterStore.addCount}>+</button>
+      <div>
+        <span>{counterStore.filterList.join(',')}</span>
+        <button onClick={counterStore.addList}>+</button>
+      </div>
+      <div>
+        <span>{counterStore.count}</span>
+        <button onClick={counterStore.addCount}>+</button>
+      </div>
     </div>
   );
 }
