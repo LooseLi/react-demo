@@ -2,6 +2,13 @@ import {Button, Card, Checkbox, Form, Input} from 'antd';
 import './index.scss';
 
 function Login() {
+  const onFinish = values => {
+    // todo: 登录
+    console.log('Success:', values);
+  };
+  const onFinishFailed = errorInfo => {
+    console.log('Failed:', errorInfo);
+  };
   return (
     <div className="login">
       <Card className="login-container">
@@ -11,6 +18,8 @@ function Login() {
           initialValues={{
             remember: true,
           }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
         >
           <Form.Item
             name="username"
