@@ -1,10 +1,17 @@
 import {Button, Card, Checkbox, Form, Input} from 'antd';
+// 导入样式文件
 import './index.scss';
+import {useStore} from '@/demo-project/store';
 
 function Login() {
+  const {loginStore} = useStore();
   const onFinish = values => {
     // todo: 登录
     console.log('Success:', values);
+    loginStore.getToken({
+      username: values.username,
+      password: values.password,
+    });
   };
   const onFinishFailed = errorInfo => {
     console.log('Failed:', errorInfo);

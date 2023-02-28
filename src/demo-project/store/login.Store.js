@@ -5,7 +5,10 @@ class LoginStore {
   constructor() {
     makeAutoObservable(this);
   }
-  setToken = ({username, password}) => {};
+  getToken = ({username, password}) => {
+    console.log(username, password);
+    this.token = 'leeson';
+  };
 }
 
 export default LoginStore;
