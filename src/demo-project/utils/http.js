@@ -1,5 +1,6 @@
 // 封装axios
 import axios from 'axios';
+import {getToken} from '@/demo-project/utils/index';
 
 const http = axios.create({
   baseURL: '',
@@ -9,6 +10,10 @@ const http = axios.create({
 // 请求拦截器
 http.interceptors.request.use(
   config => {
+    const token = getToken();
+    if (token) {
+      config.headers.Authorization = `React-${token}`;
+    }
     return config;
   },
   error => {

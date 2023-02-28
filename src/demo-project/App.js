@@ -1,13 +1,22 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import Layout from '@/demo-project/pages/Layout';
 import Login from '@/demo-project/pages/Login';
+import {AuthComponent} from '@/demo-project/components/AuthComponent';
 
 function App() {
   return (
     <BrowserRouter>
       <div className="app">
         <Routes>
-          <Route path="/" element={<Layout />}></Route>
+          {/* Layout需要鉴权处理 */}
+          <Route
+            path="/"
+            element={
+              <AuthComponent>
+                <Layout />
+              </AuthComponent>
+            }
+          ></Route>
           <Route path="/login" element={<Login />}></Route>
         </Routes>
       </div>
