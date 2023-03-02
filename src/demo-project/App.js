@@ -1,5 +1,5 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
-import Layout from '@/demo-project/pages/Layout';
+import LayoutPages from '@/demo-project/pages/Layout';
 import Login from '@/demo-project/pages/Login';
 import {AuthComponent} from '@/demo-project/components/AuthComponent';
 
@@ -13,7 +13,7 @@ function App() {
             path="/"
             element={
               <AuthComponent>
-                <Layout />
+                <LayoutPages />
               </AuthComponent>
             }
           ></Route>
