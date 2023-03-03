@@ -1,15 +1,12 @@
 import React from 'react';
 import {UploadOutlined, UserOutlined, VideoCameraOutlined} from '@ant-design/icons';
-import {Layout, Menu, theme} from 'antd';
+import {Layout, Menu} from 'antd';
+import {Outlet} from 'react-router-dom';
 import './index.scss';
 
-const {Header, Content, Sider} = Layout;
+const {Sider} = Layout;
 
 const LayoutPages: React.FC = () => {
-  const {
-    token: {colorBgContainer},
-  } = theme.useToken();
-
   return (
     <Layout>
       <Sider>
@@ -25,7 +22,9 @@ const LayoutPages: React.FC = () => {
           </Menu.Item>
         </Menu>
       </Sider>
-      <Layout className='layout-content'>内容</Layout>
+      <Layout className="layout-content">
+        <Outlet />
+      </Layout>
     </Layout>
   );
 };
