@@ -1,13 +1,19 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {UploadOutlined, UserOutlined, VideoCameraOutlined} from '@ant-design/icons';
 import {Layout, Menu} from 'antd';
 import {Outlet, Link, useLocation} from 'react-router-dom';
 import './index.scss';
+import {useStore} from '@/demo-project/store';
+import {observer} from 'mobx-react-lite';
 
 const {Sider} = Layout;
 
 const LayoutPages: React.FC = () => {
   const {pathname} = useLocation();
+  const {userStore} = useStore();
+  useEffect(() => {
+    userStore.getUserInfo();
+  }, [userStore]);
   return (
     <Layout>
       <Sider>
@@ -24,9 +30,10 @@ const LayoutPages: React.FC = () => {
         </Menu>
       </Sider>
       <Layout className="layout-content" style={{padding: 20}}>
+        {userStore.userInfo.username}
         <Outlet />
       </Layout>
     </Layout>
   );
 };
-export default LayoutPages;
+export default observer(LayoutPages);
