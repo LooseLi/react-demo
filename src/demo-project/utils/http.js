@@ -1,6 +1,7 @@
 // 封装axios
 import axios from 'axios';
 import {getToken} from '@/demo-project/utils/index';
+import {history} from './history';
 
 const http = axios.create({
   baseURL: '',
@@ -27,6 +28,9 @@ http.interceptors.response.use(
     return response;
   },
   error => {
+    if (error.response.status === 401) {
+      history.push('/login');
+    }
     return Promise.reject(error);
   }
 );

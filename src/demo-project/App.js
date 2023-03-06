@@ -1,4 +1,5 @@
-import {BrowserRouter, Routes, Route} from 'react-router-dom';
+import {Routes, Route, unstable_HistoryRouter as HistoryRouter} from 'react-router-dom';
+import {history} from '@/demo-project/utils/history';
 import LayoutPages from '@/demo-project/pages/Layout';
 import Login from '@/demo-project/pages/Login';
 import {AuthComponent} from '@/demo-project/components/AuthComponent';
@@ -8,7 +9,7 @@ import Publish from '@/demo-project/pages/Publish';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <div className="app">
         <Routes>
           {/* Layout需要鉴权处理 */}
@@ -27,7 +28,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
         </Routes>
       </div>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
