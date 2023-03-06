@@ -17,7 +17,8 @@ const LayoutPages: React.FC = () => {
   return (
     <Layout>
       <Header className="header">
-        <div className="logo" />
+        <p className='logo'>React后台系统</p>
+        <div className='info'>{userStore.userInfo.username}</div>
       </Header>
       <Layout>
         <Sider>
@@ -34,7 +35,6 @@ const LayoutPages: React.FC = () => {
           </Menu>
         </Sider>
         <Layout className="layout-content" style={{padding: 20}}>
-          {userStore.userInfo.username}
           <Outlet />
         </Layout>
       </Layout>
