@@ -1,6 +1,5 @@
 import './index.scss';
-import {useEffect, useRef} from 'react';
-import * as echarts from 'echarts';
+import Bar from '@/demo-project/components/Bar';
 /**
  * 思路：
  * 1. 看官方文档 把echarts加入项目
@@ -10,35 +9,16 @@ import * as echarts from 'echarts';
  * 3. 按照需求 哪些参数需要自定义 抽象出来
  */
 const Home = () => {
-  const domRef = useRef();
-  const initEcharts = () => {
-    // 基于准备好的dom，初始化echarts实例
-    const myChart = echarts.init(domRef.current);
-    // 绘制图表
-    myChart.setOption({
-      title: {
-        text: 'ECharts 入门示例',
-      },
-      tooltip: {},
-      xAxis: {
-        data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子'],
-      },
-      yAxis: {},
-      series: [
-        {
-          name: '销量',
-          type: 'bar',
-          data: [5, 20, 36, 10, 10, 20],
-        },
-      ],
-    });
-  };
-  useEffect(() => {
-    initEcharts();
-  }, []);
   return (
     <>
-      <div ref={domRef} style={{width: '500px', height: '300px'}}></div>
+      {/* 渲染Bar组件 */}
+      <Bar title="前端主流框架" xData={['Vue', 'React', 'Angular']} yData={[20, 30, 40]} style={{width: '500px', height: '300px'}} />
+      <Bar
+        title="前端主流框架满意度调查"
+        xData={['不满意', '一般', '满意']}
+        yData={[100, 200, 300]}
+        style={{width: '500px', height: '300px'}}
+      />
     </>
   );
 };
