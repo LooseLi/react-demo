@@ -10,6 +10,43 @@ function Article() {
   const onFinish = values => {
     console.log(values);
   };
+  const channelList = [
+    {
+      id: 0,
+      name: '前端',
+      value: '前端',
+    },
+    {
+      id: 1,
+      name: '后端',
+      value: '后端',
+    },
+    {
+      id: 2,
+      name: 'iOS',
+      value: 'iOS',
+    },
+    {
+      id: 3,
+      name: 'Android',
+      value: 'Android',
+    },
+    {
+      id: 4,
+      name: 'python',
+      value: 'python',
+    },
+    {
+      id: 5,
+      name: '大数据',
+      value: '大数据',
+    },
+    {
+      id: 6,
+      name: '人工智能',
+      value: '人工智能',
+    },
+  ];
   const data = [
     {
       id: '8001',
@@ -92,9 +129,12 @@ function Article() {
           </Form.Item>
 
           <Form.Item label="频道" name="channel">
-            <Select placeholder="请选择文章频道" defaultValue="lucy" style={{width: 120}}>
-              <Option value="jack">jack</Option>
-              <Option value="lucy">lucy</Option>
+            <Select placeholder="请选择文章频道" style={{width: 120}}>
+              {channelList.map(channel => (
+                <Option key={channel.id} value={channel.value}>
+                  {channel.name}
+                </Option>
+              ))}
             </Select>
           </Form.Item>
 
