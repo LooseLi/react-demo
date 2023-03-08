@@ -2,6 +2,8 @@ import './index.scss';
 import {Link} from 'react-router-dom';
 import {Card, Breadcrumb, Form, Radio, Select, DatePicker, Button, Table, Space} from 'antd';
 import locale from 'antd/es/date-picker/locale/zh_CN';
+import {useEffect, useState} from 'react';
+import jsondata from './index.json';
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -10,43 +12,12 @@ function Article() {
   const onFinish = values => {
     console.log(values);
   };
-  const channelList = [
-    {
-      id: 0,
-      name: '前端',
-      value: '前端',
-    },
-    {
-      id: 1,
-      name: '后端',
-      value: '后端',
-    },
-    {
-      id: 2,
-      name: 'iOS',
-      value: 'iOS',
-    },
-    {
-      id: 3,
-      name: 'Android',
-      value: 'Android',
-    },
-    {
-      id: 4,
-      name: 'python',
-      value: 'python',
-    },
-    {
-      id: 5,
-      name: '大数据',
-      value: '大数据',
-    },
-    {
-      id: 6,
-      name: '人工智能',
-      value: '人工智能',
-    },
-  ];
+  const [channelList, setChannelList] = useState([]);
+  // 文章列表管理 统一管理数据
+  const [ArticleList, setList] = useState({
+    list: [],
+    count: 0,
+  });
   const data = [
     {
       id: '8001',
@@ -102,6 +73,10 @@ function Article() {
       ),
     },
   ];
+  useEffect(() => {
+    setChannelList(jsondata.channel_list);
+    setList(jsondata.article_list);
+  }, []);
   return (
     <>
       {/* 筛选区域 */}
@@ -129,7 +104,7 @@ function Article() {
           </Form.Item>
 
           <Form.Item label="频道" name="channel">
-            <Select placeholder="请选择文章频道" style={{width: 120}}>
+            <Select placeholder="请选择文章频道" style={{width: 160}}>
               {channelList.map(channel => (
                 <Option key={channel.id} value={channel.value}>
                   {channel.name}
@@ -150,7 +125,7 @@ function Article() {
         </Form>
       </Card>
       {/* 文章列表区域 */}
-      <Card>
+      <Card style={{marginTop: 20}}>
         <Table rowKey="id" columns={columns} dataSource={data} />
       </Card>
     </>

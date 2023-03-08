@@ -1,0 +1,61 @@
+{
+  "channel_list": [
+    {
+      "id": 0,
+      "name": "前端",
+      "value": "前端"
+    },
+    {
+      "id": 1,
+      "name": "后端",
+      "value": "后端"
+    },
+    {
+      "id": 2,
+      "name": "iOS",
+      "value": "iOS"
+    },
+    {
+      "id": 3,
+      "name": "Android",
+      "value": "Android"
+    },
+    {
+      "id": 4,
+      "name": "python",
+      "value": "python"
+    },
+    {
+      "id": 5,
+      "name": "大数据",
+      "value": "大数据"
+    },
+    {
+      "id": 6,
+      "name": "人工智能",
+      "value": "人工智能"
+    }
+  ],
+  "article_list": [
+    {
+      "id": "8001",
+      "comment_count": 10,
+      "cover": "",
+      "like_count": 100,
+      "pubdate": "2023-3-7 10:00",
+      "read_count": 523,
+      "status": 1,
+      "title": "物理学不存在了"
+    },
+    {
+      "id": "8002",
+      "comment_count": 66,
+      "cover": "",
+      "like_count": 999,
+      "pubdate": "2023-3-8 16:16",
+      "read_count": 1124,
+      "status": 1,
+      "title": "都是虫子"
+    }
+  ]
+}
