@@ -116,7 +116,7 @@ function Article() {
       {/* 文章列表区域 */}
       <Card style={{marginTop: 20}}>
         <p>
-          共发布 <span style={{color: '#ff6800'}}>{articleList.count}</span> 篇文章
+          根据筛选条件共查询到 <span style={{color: '#ff6800'}}>{articleList.count}</span> 篇文章
         </p>
         <Table rowKey="id" columns={columns} dataSource={articleList.list} />
       </Card>
