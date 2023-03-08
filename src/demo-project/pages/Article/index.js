@@ -14,22 +14,10 @@ function Article() {
   };
   const [channelList, setChannelList] = useState([]);
   // 文章列表管理 统一管理数据
-  const [ArticleList, setList] = useState({
+  const [articleList, setList] = useState({
     list: [],
     count: 0,
   });
-  const data = [
-    {
-      id: '8001',
-      comment_count: 0,
-      cover: '',
-      like_count: 0,
-      pubdate: '2023-3-7 10:00:00',
-      read_count: 0,
-      status: 1,
-      title: '测试一下',
-    },
-  ];
   const columns = [
     {
       title: '封面',
@@ -75,7 +63,10 @@ function Article() {
   ];
   useEffect(() => {
     setChannelList(jsondata.channel_list);
-    setList(jsondata.article_list);
+    setList({
+      list: jsondata.article_list,
+      count: jsondata.article_list.length,
+    });
   }, []);
   return (
     <>
@@ -126,7 +117,7 @@ function Article() {
       </Card>
       {/* 文章列表区域 */}
       <Card style={{marginTop: 20}}>
-        <Table rowKey="id" columns={columns} dataSource={data} />
+        <Table rowKey="id" columns={columns} dataSource={articleList.list} />
       </Card>
     </>
   );
