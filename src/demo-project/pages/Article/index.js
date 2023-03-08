@@ -20,18 +20,13 @@ function Article() {
   });
   const columns = [
     {
-      title: '封面',
-      dataIndex: 'cover',
-    },
-    {
       title: '标题',
       dataIndex: 'title',
-      width: 200,
     },
     {
       title: '状态',
       dataIndex: 'status',
-      width: 200,
+      width: 120,
     },
     {
       title: '发布时间',
@@ -41,14 +36,17 @@ function Article() {
     {
       title: '阅读数',
       dataIndex: 'read_count',
+      width: 120,
     },
     {
       title: '评论数',
       dataIndex: 'comment_count',
+      width: 120,
     },
     {
       title: '点赞数',
       dataIndex: 'like_count',
+      width: 120,
     },
     {
       title: '操作',
@@ -117,6 +115,9 @@ function Article() {
       </Card>
       {/* 文章列表区域 */}
       <Card style={{marginTop: 20}}>
+        <p>
+          共发布 <span style={{color: '#ff6800'}}>{articleList.count}</span> 篇文章
+        </p>
         <Table rowKey="id" columns={columns} dataSource={articleList.list} />
       </Card>
     </>
