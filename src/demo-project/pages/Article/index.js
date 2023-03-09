@@ -1,6 +1,6 @@
 import './index.scss';
 import {Link} from 'react-router-dom';
-import {Card, Breadcrumb, Form, Radio, Select, DatePicker, Button, Table, Space} from 'antd';
+import {Card, Breadcrumb, Form, Radio, Select, DatePicker, Button, Table, Space, Tag} from 'antd';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 import {useEffect, useState} from 'react';
 import jsondata from './index.json';
@@ -18,6 +18,25 @@ function Article() {
     list: [],
     count: 0,
   });
+  // 状态status
+  const statusObj = {
+    0: {
+      color: '',
+      label: '草稿',
+    },
+    1: {
+      color: 'cyan',
+      label: '待审核',
+    },
+    2: {
+      color: 'green',
+      label: '审核通过',
+    },
+    3: {
+      color: 'red',
+      label: '审核失败',
+    },
+  };
   const columns = [
     {
       title: '标题',
@@ -27,6 +46,15 @@ function Article() {
       title: '状态',
       dataIndex: 'status',
       width: 120,
+      render: (_, {status}) => (
+        <>
+          {
+            <Tag color={statusObj[status].color} key={status}>
+              {statusObj[status].label}
+            </Tag>
+          }
+        </>
+      ),
     },
     {
       title: '发布时间',
