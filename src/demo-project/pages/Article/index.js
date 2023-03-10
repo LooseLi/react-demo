@@ -4,6 +4,7 @@ import {Card, Breadcrumb, Form, Radio, Select, DatePicker, Button, Table, Space,
 import locale from 'antd/es/date-picker/locale/zh_CN';
 import {useEffect, useState} from 'react';
 import jsondata from './index.json';
+import {EditTwoTone, DeleteTwoTone} from '@ant-design/icons';
 
 const {Option} = Select;
 const {RangePicker} = DatePicker;
@@ -81,8 +82,8 @@ function Article() {
       dataIndex: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <a>编辑</a>
-          <a>删除</a>
+          <EditTwoTone />
+          <DeleteTwoTone twoToneColor="#eb2f96" />
         </Space>
       ),
     },
