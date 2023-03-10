@@ -10,7 +10,7 @@ import Bar from '@/demo-project/components/Bar';
  */
 const Home = () => {
   return (
-    <>
+    <section className="home-wrap">
       {/* 渲染Bar组件 */}
       <Bar title="前端主流框架" xData={['Vue', 'React', 'Angular']} yData={[20, 30, 40]} style={{width: '500px', height: '300px'}} />
       <Bar
@@ -19,7 +19,7 @@ const Home = () => {
         yData={[100, 200, 300]}
         style={{width: '500px', height: '300px'}}
       />
-    </>
+    </section>
   );
 };
 
