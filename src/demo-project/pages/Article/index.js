@@ -12,7 +12,7 @@ const {RangePicker} = DatePicker;
 function Article() {
   const onFinish = values => {
     const {channel, date, status} = values;
-    console.log(values.date);
+    console.log(values);
     let arr = jsondata.article_list;
     let arrLength = 0;
     // 有筛选条件
@@ -23,11 +23,11 @@ function Article() {
       if (channel) {
         arr = arr.filter(item => item.channel === channel);
       }
-      if (date.length) {
+      if (date && date.length) {
         const begin_date = new Date(`${date[0].$y}-${date[0].$M + 1}-${date[0].$D}`).getTime();
         const end_date = new Date(`${date[1].$y}-${date[1].$M + 1}-${date[1].$D}`).getTime();
         arr = arr.filter(item => {
-          const time = new Date(item.pubdate).getTime();
+          const time = new Date(item.publish_date).getTime();
           return time >= begin_date && time <= end_date;
         });
       }
@@ -86,7 +86,7 @@ function Article() {
     },
     {
       title: '发布时间',
-      dataIndex: 'pubdate',
+      dataIndex: 'publish_date',
       width: 200,
     },
     {
