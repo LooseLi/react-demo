@@ -11,7 +11,22 @@ const {RangePicker} = DatePicker;
 
 function Article() {
   const onFinish = values => {
+    const {channel, date, status} = values;
     console.log(values);
+    let arr = [];
+    let arrLength = 0;
+    // 有筛选条件
+    if (status > -1 || channel || date) {
+      arr = jsondata.article_list.filter(item => item.status === status);
+      arrLength = arr.length;
+    } else {
+      arr = jsondata.article_list;
+      arrLength = jsondata.article_list.length;
+    }
+    setList({
+      list: arr,
+      count: arrLength,
+    });
   };
   const [channelList, setChannelList] = useState([]);
   // 文章列表管理 统一管理数据
