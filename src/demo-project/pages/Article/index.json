@@ -45,7 +45,8 @@
       "pubdate": "2023-3-7",
       "read_count": 523,
       "status": 1,
-      "title": "物理学不存在了"
+      "title": "物理学不存在了",
+      "channel": "前端"
     },
     {
       "id": "8002",
@@ -55,7 +56,8 @@
       "pubdate": "2023-3-8",
       "read_count": 1124,
       "status": 2,
-      "title": "都是虫子"
+      "title": "都是虫子",
+      "channel": "前端"
     },
     {
       "id": "8003",
@@ -65,7 +67,8 @@
       "pubdate": "2023-3-9",
       "read_count": 568,
       "status": 0,
-      "title": "水滴"
+      "title": "水滴",
+      "channel": "iOS"
     },
     {
       "id": "8004",
@@ -75,7 +78,8 @@
       "pubdate": "2023-3-9",
       "read_count": 8325,
       "status": 3,
-      "title": "宇宙闪烁"
+      "title": "宇宙闪烁",
+      "channel": "人工智能"
     }
   ]
 }

@@ -13,14 +13,18 @@ function Article() {
   const onFinish = values => {
     const {channel, date, status} = values;
     console.log(values);
-    let arr = [];
+    let arr = jsondata.article_list;
     let arrLength = 0;
     // 有筛选条件
     if (status > -1 || channel || date) {
-      arr = jsondata.article_list.filter(item => item.status === status);
+      if (status > -1) {
+        arr = arr.filter(item => item.status === status);
+      }
+      if (channel) {
+        arr = arr.filter(item => item.channel === channel);
+      }
       arrLength = arr.length;
     } else {
-      arr = jsondata.article_list;
       arrLength = jsondata.article_list.length;
     }
     setList({
