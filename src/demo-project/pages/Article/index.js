@@ -46,6 +46,13 @@ function Article() {
     list: [],
     count: 0,
   });
+  const delArticle = data => {
+    const arr = articleList.list.filter(item => item.id !== data.id);
+    setList({
+      list: arr,
+      count: arr.length,
+    });
+  };
   // 状态status
   const statusObj = {
     0: {
@@ -110,7 +117,12 @@ function Article() {
       render: (_, record) => (
         <Space size="middle">
           <EditTwoTone />
-          <DeleteTwoTone twoToneColor="#eb2f96" />
+          <DeleteTwoTone
+            twoToneColor="#eb2f96"
+            onClick={() => {
+              delArticle(record);
+            }}
+          />
         </Space>
       ),
     },
