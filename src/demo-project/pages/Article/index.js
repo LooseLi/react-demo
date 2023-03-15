@@ -1,5 +1,5 @@
 import './index.scss';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {Card, Breadcrumb, Form, Radio, Select, DatePicker, Button, Table, Space, Tag} from 'antd';
 import locale from 'antd/es/date-picker/locale/zh_CN';
 import {useEffect, useState} from 'react';
@@ -40,12 +40,15 @@ function Article() {
       count: arrLength,
     });
   };
+  
   const [channelList, setChannelList] = useState([]);
   // 文章列表管理 统一管理数据
   const [articleList, setList] = useState({
     list: [],
     count: 0,
   });
+
+  // 删除文章
   const delArticle = data => {
     const arr = articleList.list.filter(item => item.id !== data.id);
     setList({
@@ -53,6 +56,14 @@ function Article() {
       count: arr.length,
     });
   };
+
+  // 编辑文章
+  const navigate = useNavigate();
+  const editArticle = data => {
+    console.log(data);
+    navigate(`/publish?id=${data.id}`);
+  };
+
   // 状态status
   const statusObj = {
     0: {
@@ -116,7 +127,11 @@ function Article() {
       dataIndex: 'action',
       render: (_, record) => (
         <Space size="middle">
-          <EditTwoTone />
+          <EditTwoTone
+            onClick={() => {
+              editArticle(record);
+            }}
+          />
           <DeleteTwoTone
             twoToneColor="#eb2f96"
             onClick={() => {
@@ -127,6 +142,7 @@ function Article() {
       ),
     },
   ];
+
   useEffect(() => {
     setChannelList(jsondata.channel_list);
     setList({
@@ -134,6 +150,7 @@ function Article() {
       count: jsondata.article_list.length,
     });
   }, []);
+
   return (
     <>
       {/* 筛选区域 */}
