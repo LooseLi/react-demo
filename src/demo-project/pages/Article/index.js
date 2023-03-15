@@ -40,7 +40,7 @@ function Article() {
       count: arrLength,
     });
   };
-  
+
   const [channelList, setChannelList] = useState([]);
   // 文章列表管理 统一管理数据
   const [articleList, setList] = useState({
@@ -160,9 +160,7 @@ function Article() {
             <Breadcrumb.Item>
               <Link to="/">首页</Link>
             </Breadcrumb.Item>
-            <Breadcrumb.Item>
-              <Link>内容管理</Link>
-            </Breadcrumb.Item>
+            <Breadcrumb.Item>内容管理</Breadcrumb.Item>
           </Breadcrumb>
         }
       >
