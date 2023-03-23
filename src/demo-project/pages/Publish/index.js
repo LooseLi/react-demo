@@ -4,10 +4,19 @@ import {Link} from 'react-router-dom';
 import './index.scss';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import {useState} from 'react';
 
 const {Option} = Select;
 
 const Publish = () => {
+  // 存放上传图片的列表
+  const [fileList, setFileList] = useState([]);
+  const onUploadChange = ({fileList}) => {
+    // 采取受控的写法：在最后一次log里response
+    // 最终react state fileList中存放的数据有response.data.url
+    setFileList(fileList);
+    console.log(fileList);
+  };
   return (
     <div className="publish">
       <Card
@@ -33,6 +42,21 @@ const Publish = () => {
               ))} */}
               <Option value={0}>推荐</Option>
             </Select>
+          </Form.Item>
+          <Form.Item label="内容" name="content" rules={[{required: true, message: '请输入文章内容'}]}>
+            <Upload
+              name="image"
+              listType="picture-card"
+              className=""
+              showUploadList
+              action=""
+              fileList={fileList}
+              onChange={onUploadChange}
+            >
+              <div>
+                <PlusOutlined />
+              </div>
+            </Upload>
           </Form.Item>
           <Form.Item label="内容" name="content" rules={[{required: true, message: '请输入文章内容'}]}>
             <ReactQuill theme="snow" />
