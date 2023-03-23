@@ -43,7 +43,7 @@ const Publish = () => {
               <Option value={0}>推荐</Option>
             </Select>
           </Form.Item>
-          <Form.Item label="内容" name="content" rules={[{required: true, message: '请输入文章内容'}]}>
+          <Form.Item label="上传" name="cover" rules={[{required: true, message: '请上传照片'}]}>
             <Upload
               name="image"
               listType="picture-card"
