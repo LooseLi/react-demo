@@ -2,7 +2,7 @@ import {lazy, Suspense} from 'react';
 import {Routes, Route, unstable_HistoryRouter as HistoryRouter} from 'react-router-dom';
 import {history} from '@/demo-project/utils/history';
 import {AuthComponent} from '@/demo-project/components/AuthComponent';
-// 按需导入(test)
+// 按需导入
 const Home = lazy(() => import('@/demo-project/pages/Home'));
 const Login = lazy(() => import('@/demo-project/pages/Login'));
 const Article = lazy(() => import('@/demo-project/pages/Article'));
