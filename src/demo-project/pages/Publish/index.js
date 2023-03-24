@@ -17,6 +17,11 @@ const Publish = () => {
     setFileList(fileList);
     console.log(fileList);
   };
+  const [imgCount, setImgCount] = useState(1);
+  const radioChange = e => {
+    console.log(e.target.value);
+    setImgCount(e.target.value);
+  };
   return (
     <div className="publish">
       <Card
@@ -43,21 +48,32 @@ const Publish = () => {
               <Option value={0}>推荐</Option>
             </Select>
           </Form.Item>
-          <Form.Item label="上传" name="cover" rules={[{required: true, message: '请上传照片'}]}>
-            <Upload
-              name="image"
-              listType="picture-card"
-              className=""
-              showUploadList
-              action=""
-              fileList={fileList}
-              onChange={onUploadChange}
-            >
-              <div>
-                <PlusOutlined />
-              </div>
-            </Upload>
+          <Form.Item label="封面">
+            <Form.Item name="type">
+              <Radio.Group onChange={radioChange}>
+                <Radio value={1}>单图</Radio>
+                <Radio value={3}>三图</Radio>
+                <Radio value={0}>无图</Radio>
+              </Radio.Group>
+            </Form.Item>
           </Form.Item>
+          {imgCount > 0 && (
+            <Form.Item label="上传" name="cover">
+              <Upload
+                name="image"
+                listType="picture-card"
+                className=""
+                showUploadList
+                action=""
+                fileList={fileList}
+                onChange={onUploadChange}
+              >
+                <div>
+                  <PlusOutlined />
+                </div>
+              </Upload>
+            </Form.Item>
+          )}
           <Form.Item label="内容" name="content" rules={[{required: true, message: '请输入文章内容'}]}>
             <ReactQuill theme="snow" />
           </Form.Item>
