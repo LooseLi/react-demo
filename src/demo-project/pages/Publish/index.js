@@ -66,6 +66,8 @@ const Publish = () => {
                 showUploadList
                 action=""
                 fileList={fileList}
+                multiple={imgCount > 1 ? true : false}
+                maxCount={imgCount}
                 onChange={onUploadChange}
               >
                 <div>
