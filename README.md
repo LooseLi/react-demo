@@ -80,7 +80,38 @@ const flag = false;
 
 ## 函数组件
 
+```js
+function Hello() {
+  return <p>函数组件</p>
+}
+
+function App() {
+  return (
+    <div className="App">
+      <Hello></Hello>
+    </div>
+  );
+}
+export default App;
+```
+
 ## 事件对象e和自定义传参
+
+```js
+function Hello() {
+  // 事件对象e
+  const helloClick = (e, msg) => {
+    e.preventDefault();
+    console.log(`函数组件事件`, e);
+  }
+  return (
+    <div>
+      <p><a onClick={helloClick} href="http://baidu.com">函数组件</a></p>
+      <p onClick={(e) => helloClick(e, '自定义传参')}></p>
+    </div>
+  )
+}
+```
 
 ## 组件状态
 
